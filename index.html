@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nishant Annalore — Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  :root {
+    --bg:#f9fafb;
+    --card:#fff;
+    --text:#111827;
+    --muted:#6b7280;
+    --brand:#0047ab; /* Royal Blue */
+    --brand-2:#1d4ed8; /* Darker Royal Blue */
+    --shadow:0 8px 24px rgba(0,0,0,.08);
+    --radius-lg:18px;
+  }
+  body.dark {
+    --bg:#121212;
+    --card:#1f1f1f;
+    --text:#f5f5f5;
+    --muted:#a1a1aa;
+    --shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  body {
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    transition:background .3s,color .3s;
+  }
+  html{scroll-behavior:smooth}
+  .inner { max-width:1100px; margin:0 auto; padding:0 20px;}
+  section {padding:64px 0}
+  .center{text-align:center}
+  h1{font-size:40px;margin:10px 0}
+  h2{font-size:32px;margin:0 0 10px;color:var(--brand)}
+  .sub{color:var(--muted);margin-bottom:24px}
+  .divider{height:4px;border-radius:10px;width:min(1100px,90%);margin:40px auto;
+    background:linear-gradient(90deg,var(--brand),var(--brand-2));}
+
+  /* HEADER */
+  header{position:sticky;top:0;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:50;transition:background .3s}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:700;color:var(--brand)}
+  .nav ul{display:flex;gap:24px;list-style:none}
+  .nav a{text-decoration:none;color:var(--text);font-weight:500;transition:.2s}
+  .nav a:hover{color:var(--brand)}
+  .toggle-theme{cursor:pointer;font-size:22px;color:var(--brand);}
+
+  /* HERO MODIFIED */
+  .hero-section{text-align:center}
+  .hero__img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--card);box-shadow:var(--shadow);transition:.3s;margin-bottom:18px}
+  .lead{color:var(--muted);max-width:800px;margin:12px auto;font-size:18px;line-height:1.5}
+  .btn-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:20px}
+  .btn{background:linear-gradient(90deg,var(--brand),var(--brand-2));color:#fff;font-weight:700;
+    padding:12px 24px;border-radius:999px;text-decoration:none;transition:.2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,71,171,.3)}
+  .resume-btn{display:inline-block;margin-top:24px}
+
+  /* GENERIC STACK */
+  .stack{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:left}
+  .card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:20px;width:100%;max-width:800px;transition:.3s}
+
+  /* PROJECT GRID */
+  .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:30px}
+  .project-card{background:var(--card);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:.3s}
+  .project-content{padding:16px}
+  .project-content h3{margin:8px 0;font-size:20px;color:var(--brand)}
+  .project-content p{color:var(--muted);font-size:14px;margin-bottom:12px}
+  .project-links a{margin-right:14px;color:var(--brand);text-decoration:none;font-weight:600}
+
+  /* SKILLS GRID */
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:24px;text-align:center}
+  .skill-box{background:var(--card);padding:20px;border-radius:var(--radius-lg);box-shadow:var(--shadow);transition:.3s}
+  .skill-box h4{margin-bottom:12px;color:var(--brand)}
+  .skill-icons span{display:inline-block;background:#eaf2ff;border-radius:10px;padding:6px 12px;margin:6px;font-weight:600}
+  body.dark .skill-icons span{background:#2a2a2a}
+
+  /* CERTIFICATES */
+  .cert-list{display:flex;flex-direction:column;gap:16px;margin-top:20px}
+  .cert-item{background:var(--card);padding:14px 18px;border-radius:var(--radius-lg);box-shadow:var(--shadow);font-weight:500;transition:.3s}
+
+  /* CONTACT */
+  #contact .contact-wrap{
+    display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:24px
+  }
+  .contact-link{
+    display:flex;align-items:center;gap:14px;
+    font-size:22px;font-weight:600;color:var(--brand);
+    text-decoration:none;background:var(--card);border:2px solid var(--brand);
+    border-radius:14px;padding:16px 22px;width:clamp(280px,60%,480px);
+    justify-content:center;transition:.3s;
+  }
+  .contact-link:hover{background:#eaf2ff}
+  .contact-link i{font-size:28px}
+  body.dark .contact-link:hover{background:#2a2a2a}
+
+  /* FOOTER */
+  footer {
+    margin-top:64px;
+    padding-top:16px;
+    padding-bottom:24px;
+    background:var(--card);
+    transition:.3s;
+  }
+  .footer-divider {
+    border-top:2px solid var(--brand);
+    width:100%;
+    margin-bottom:22px;
+  }
+  .footer-icons {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:24px;
+    margin-bottom:10px;
+  }
+  .footer-icons a {
+    text-decoration:none;
+    color:var(--brand);
+    font-size:32px;
+    transition:transform .16s;
+    display:flex;
+    align-items:center;
+  }
+  .footer-icons a:hover {
+    transform:scale(1.13);
+    opacity:.8;
+  }
+  .footer-text {
+    color:var(--text);
+    font-size:18px;
+    font-weight:500;
+    text-align:center;
+  }
+  @media(max-width:700px){
+    h1{font-size:28px}
+    h2{font-size:24px}
+    .footer-icons{gap:14px}
+    .footer-text{font-size:14px}
+  }
+
+  /* ANIMATIONS */
+  [data-animate]{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+  [data-animate].show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner nav">
+    <div class="logo">Nishant Annalore</div>
+    <nav>
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section" data-animate>
+  <div class="inner">
+    <img class="hero__img" src="C:\Users\NISHANT\OneDrive\Pictures\Screenshots\Screenshot 2025-08-25 104627.png" alt="Profile">
+    <h1>Nishant Annalore</h1>
+    <p class="lead">Aspiring Data Analyst & Data Scientist | Transforming Data into Actionable Insights</p>
+    <div class="btn-row">
+      <a class="btn" href="https://linkedin.com/in/nishant-annalore" target="_blank">LinkedIn</a>
+      <a class="btn" href="https://github.com/NishantAnna" target="_blank">GitHub</a>
+      <a class="btn" href="mailto:nishantannalore1003@gmail.com">Email</a>
+    </div>
+    <a class="btn resume-btn" href="C:\Users\NISHANT\Downloads\Nishant_DA_Resume1.pdf" download>Download Resume</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="center" data-animate>
+  <div class="inner">
+    <h2>Education</h2>
+    <div class="stack">
+      <div class="card"><b>M.Sc. in Data Science</b> — St. Aloysius (Deemed to be University), Mangaluru (2024–2026)</div>
+      <div class="card"><b>B.Sc. in Information Technology</b> — Lala Lajptrai College, University of Mumbai (2021–2024)</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section id="work" class="center" data-animate>
+  <div class="inner">
+    <h2>Work Experience</h2>
+    <div class="stack">
+      <div class="card">
+        <b>Data Analyst Intern — Elevate Labs </b> (Feb 2024 – Apr 2024)<br>
+        • Automated data pipelines reducing processing time by 30%.<br>
+        • Built dynamic dashboards for performance tracking.<br>
+        • Conducted KPI analysis to support strategic decisions.
+      </div>
+      <div class="card">
+        <b>Business Development Intern — Skillarena</b> (Jan 2023 – Mar 2023)<br>
+        • Performed market analysis for new product verticals.<br>
+        • Collaborated on data-driven growth strategies.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="center" data-animate>
+  <div class="inner">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Used Car Price Prediction</h3>
+          <p>End-to-end ML pipeline (LR, RF, XGBoost) to forecast resale values; interactive app for what-if analysis.</p>
+          <div class="project-links">
+            <a href="https://github.com/NishantAnna/Car_Prediction">GitHub →</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Financial Startup KPI Analysis</h3>
+          <p>Computed Burn/Run Rate, LTV:CAC; built Tableau dashboards to monitor growth and cash runway.</p>
+          <div class="project-links">
+            <a href="https://github.com/NishantAnna/ElevateLabs_Project">GitHub →</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Student Stress Management Analysis</h3>
+          <p>EDA & visualization of academic/lifestyle factors influencing stress; insights to guide campus programs.</p>
+          <div class="project-links">
+            <a href="#">GitHub →</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-content">
+          <h3>StyleSphere Mobile Application</h3>
+          <p>Beauty-service booking app; Firebase auth & realtime DB; analytics to understand booking patterns.</p>
+          <div class="project-links">
+            <a href="https://github.com/NishantAnna/Stylesphere">GitHub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="center" data-animate>
+  <div class="inner">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <h4>Programming</h4>
+        <div class="skill-icons">
+          <span>Python</span><span>R</span><span>SQL</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <h4>Data Analytics</h4>
+        <div class="skill-icons">
+          <span>Pandas</span><span>NumPy</span><span>scikit-learn</span><span>Machine Learning</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <h4>Visualization</h4>
+        <div class="skill-icons">
+          <span>Tableau</span><span>Matplotlib</span><span>Seaborn</span><span>Excel</span>
+        </div>
+      </div>
+      <div class="skill-box">
+        <h4>Databases</h4>
+        <div class="skill-icons">
+          <span>MySQL</span><span>DBMS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATES -->
+<section id="certificates" class="center" data-animate>
+  <div class="inner">
+    <h2>Certificates</h2>
+    <div class="cert-list">
+      <div class="cert-item">Machine Learning Beginner - Infosys Springboard</div>
+      <div class="cert-item">Exploratory Data Analysis (EDA) - Scaler</div>
+      <div class="cert-item">Statistics 101 - IBM</div>
+      <div class="cert-item">The Data Science Course: Complete Data Science Bootcamp - Udemy</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact" class="center" data-animate>
+  <div class="inner">
+    <h2>Contact Me</h2>
+    <div class="contact-wrap">
+      <a class="contact-link" href="mailto:nishantannalore1003@gmail.com">
+        <i class="fas fa-envelope"></i>Email
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/nishant-annalore" target="_blank">
+        <i class="fab fa-linkedin"></i>LinkedIn
+      </a>
+      <a class="contact-link" href="https://github.com/NishantAnna" target="_blank">
+        <i class="fab fa-github"></i>GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-divider"></div>
+  <div class="footer-icons">
+    <a href="https://linkedin.com/in/nishant-annalore" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/NishantAnna" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="mailto:nishantannalore1003@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+  <div class="footer-text">
+    © 2025 Nishant Annalore. All rights reserved
+  </div>
+</footer>
+
+<script>
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  const icon = document.querySelector('.toggle-theme i');
+  if(document.body.classList.contains('dark')){
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }
+}
+
+// Scroll Animation
+const animateEls=document.querySelectorAll("[data-animate]");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+},{threshold:0.2});
+animateEls.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
