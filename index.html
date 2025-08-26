@@ -45,15 +45,42 @@
     background:linear-gradient(90deg,var(--brand),var(--brand-2));}
 
   /* HEADER */
-  header{position:sticky;top:0;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:50;transition:background .3s}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .logo{font-weight:700;color:var(--brand)}
-  .nav ul{display:flex;gap:24px;list-style:none}
+  header{
+    position:sticky;top:0;background:var(--card);
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+    z-index:100;transition:background .3s;
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;padding:0 20px;
+  }
+  .logo{font-weight:700;color:var(--brand);font-size:22px}
+  nav ul{display:flex;gap:24px;list-style:none}
   .nav a{text-decoration:none;color:var(--text);font-weight:500;transition:.2s}
   .nav a:hover{color:var(--brand)}
-  .toggle-theme{cursor:pointer;font-size:22px;color:var(--brand);}
+  .toggle-theme{cursor:pointer;font-size:22px;color:var(--brand);margin-left:16px}
+  .menu-icon{display:none;font-size:28px;color:var(--brand);cursor:pointer}
 
-  /* HERO MODIFIED */
+  /* Mobile Menu */
+  .mobile-menu{
+    display:none;flex-direction:column;
+    background:var(--card);position:absolute;top:64px;right:0;width:200px;
+    box-shadow:var(--shadow);border-radius:0 0 10px 10px;padding:10px;
+  }
+  .mobile-menu a{
+    text-decoration:none;color:var(--text);
+    padding:12px 8px;display:block;border-radius:6px;transition:.3s;
+    font-weight:500;
+  }
+  .mobile-menu a:hover{background:#eaf2ff}
+
+  @media(max-width:900px){
+    nav ul{display:none}
+    .menu-icon{display:block}
+    .mobile-menu.show{display:flex}
+  }
+
+  /* HERO */
   .hero-section{text-align:center}
   .hero__img{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--card);box-shadow:var(--shadow);transition:.3s;margin-bottom:18px}
   .lead{color:var(--muted);max-width:800px;margin:12px auto;font-size:18px;line-height:1.5}
@@ -63,7 +90,7 @@
   .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,71,171,.3)}
   .resume-btn{display:inline-block;margin-top:24px}
 
-  /* GENERIC STACK */
+  /* STACK SECTIONS */
   .stack{display:flex;flex-direction:column;gap:18px;align-items:center;text-align:left}
   .card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:20px;width:100%;max-width:800px;transition:.3s}
 
@@ -154,7 +181,7 @@
 <body>
 
 <header>
-  <div class="inner nav">
+  <div class="nav">
     <div class="logo">Nishant Annalore</div>
     <nav>
       <ul>
@@ -165,7 +192,17 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    <div class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="toggle-theme" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+      <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#education" onclick="toggleMenu()">Education</a>
+    <a href="#work" onclick="toggleMenu()">Work</a>
+    <a href="#projects" onclick="toggleMenu()">Projects</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
   </div>
 </header>
 
@@ -205,7 +242,7 @@
     <h2>Work Experience</h2>
     <div class="stack">
       <div class="card">
-        <b>Data Analyst Intern — Elevate Labs </b> (Feb 2024 – Apr 2024)<br>
+        <b>Data Analyst Intern — Elevate Labs</b> (Feb 2024 – Apr 2024)<br>
         • Automated data pipelines reducing processing time by 30%.<br>
         • Built dynamic dashboards for performance tracking.<br>
         • Conducted KPI analysis to support strategic decisions.
@@ -360,6 +397,11 @@ function toggleTheme() {
     icon.classList.remove('fa-sun');
     icon.classList.add('fa-moon');
   }
+}
+
+function toggleMenu(){
+  const menu=document.getElementById('mobileMenu');
+  menu.classList.toggle('show');
 }
 
 // Scroll Animation
